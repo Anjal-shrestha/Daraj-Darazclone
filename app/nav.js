@@ -1,24 +1,25 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+
 export const Navbar = () => {
   const logo = "/images/logo.png";
 
   return (
     <>
-      <nav className="bg-orange-600 py-4 grid grid-cols-4 items-center sm:px-6 md:px-4 lg:px-8">
-        <div className=" col-span-1 h-8 w-8  ">
-        <Image
-          src={logo}
-          alt="BANNER"
-          layout="responsive"
-          width={5}
-          height={5}
-          className="rounded-full shadow-md px-auto"
-          priority={false}
-        />
+      <nav className="fixed top-0 left-0 w-full z-50 bg-orange-600 py-4 grid grid-cols-4 items-center sm:px-6 md:px-4 lg:px-8">
+        <div className="col-span-1 h-8 w-8 mx-[33%]">
+          <Image
+            src={logo}
+            alt="BANNER"
+            layout="responsive"
+            width={5}
+            height={5}
+            className="rounded-full shadow-md ml-2"
+            priority={false}
+          />
         </div>
-     
+
         <Link href="#">
           <div className="col-span-1">
             <div className="font-extrabold text-2xl font-serif text-neutral-50">
@@ -60,14 +61,12 @@ export const Navbar = () => {
           </div>
         </form>
 
-        <div className="col-span-1 ml-8 flex  text-white font-semibold">
-          <a href="">
-            {" "}
+        <div className="col-span-1 ml-8 flex text-white font-semibold">
+          <a href="#">
             <span>Login</span>
           </a>
           <span className="mx-2">|</span>
-          <a href="">
-            {" "}
+          <a href="#">
             <span>Signup</span>
           </a>
         </div>

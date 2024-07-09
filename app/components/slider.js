@@ -1,4 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
+import * as React from "react";
+import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -6,42 +8,37 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import React, { useEffect, useState } from "react";
-import { getAllData } from "@/apiservices/apiservice";
+
 export function Ads() {
-  const [images, setImages] = useState([]);
+  const plugin = React.useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
-  const fetchInformation = async () => {
-    try {
-      const url = "/products/";
-      const response = await getAllData(url);
-      console.log("Fetched data:", response.data);
-      const imageUrls = response.data.map((item) => item.image);
-      setImages(imageUrls);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchInformation();
-  }, []);
+  const images = [
+    '/images/slider1.jpg',
+    '/images/slider2.jpg',
+    '/images/slider3.jpg',
+    '/images/slider4.jpg',
+    '/images/slider5.png',
+    '/images/slider6.png',
+  ];
 
   return (
-    <Carousel className="w-full max-w-2xl mx-auto bg-orange-500 shadow-md rounded-md">
-      <CarouselContent className="flex w-full my-8">
+    <Carousel
+      plugins={[plugin.current]}
+      className="w-full max-w-xs"
+      onMouseEnter={plugin.current.stop}
+      onMouseLeave={plugin.current.reset}
+    >
+      <CarouselContent className=" items-center bg-orange-600">
         {images.map((image, index) => (
-          <CarouselItem key={index} className="w-full flex justify-center">
-            <div className="p-2">
-              <Card>
-                <CardContent className="flex items-center justify-center p-6">
-                  <img
-                    src={image}
-                    alt={`Carousel item ${index}`}
-                    className="object-contain w-32 h-32 rounded-md"
-                  />
-                </CardContent>
-              </Card>
+          <CarouselItem key={index} className=" h-80 w-full flex justify-center bg-orange-600">
+            <div className="p-1">
+              <Image
+                src={image}
+                alt={`Carousel item ${index}`}
+                width={1000}
+                height={1000}
+                className="object-contain w-full h-full rounded-md"
+              />
             </div>
           </CarouselItem>
         ))}
