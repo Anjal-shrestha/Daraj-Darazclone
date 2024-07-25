@@ -1,15 +1,20 @@
 "use client";
+import DarajContext from "@/context/daraj/mycontext";
 
 import React from "react";
 import Categories from "./components/categories";
 import { Products } from "./components/products";
-import Foot from "./components/foot";
+import { DialogDemo } from "./components/message";
+
 const Home = () => {
   return (
-    <main className=" pt-20 mx-[10%]">
+    <main className="  ">
       <Categories />
-      <Products />
-      <Foot/> 
+      <div id="mall">
+        <Products />
+      </div>
+
+      <DialogDemo />
     </main>
   );
 };

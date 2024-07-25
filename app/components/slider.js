@@ -24,20 +24,20 @@ export function Ads() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full max-w-xs"
+      className="w-full"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
-      <CarouselContent className=" items-center bg-orange-600">
+      <CarouselContent className=" rounded-md">
         {images.map((image, index) => (
-          <CarouselItem key={index} className=" h-80 w-full flex justify-center bg-orange-600">
-            <div className="p-1">
+          <CarouselItem key={index} className="h-80 w-auto flex justify-center bg-orange-600">
+            <div className="">
               <Image
                 src={image}
                 alt={`Carousel item ${index}`}
                 width={1000}
                 height={1000}
-                className="object-contain w-full h-full rounded-md"
+                className="object-contain w-full h-full "
               />
             </div>
           </CarouselItem>
